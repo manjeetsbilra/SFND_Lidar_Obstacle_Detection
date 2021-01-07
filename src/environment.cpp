@@ -45,7 +45,8 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     bool renderScene = true;
     std::vector<Car> cars = initHighway(renderScene, viewer);
     
-    // TODO:: Create lidar sensor 
+    // TODO:: Create lidar sensor
+    // Manjeet will add lidar pointer here on 07.01.2021 @ 20:00 pm
 
     // TODO:: Create point processor
   
