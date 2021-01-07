@@ -47,8 +47,12 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     
     // TODO:: Create lidar sensor
     // Manjeet will add lidar pointer here on 07.01.2021 @ 20:00 pm
+    Lidar *lidar = new Lidar(cars,0);  // Create a Pointer to lidar object on heap as it my be quite large and taking groundslope =0 (Horizontal rays) and cars initHighway fn -> L85,Lidar.h 
 
     // TODO:: Create point processor
+    pcl::PointCloud<pcl::PointXYZ>::Ptr inputcloud = lidar->scan(); // The lidar object is pointing to address of fn scan() to store the data in pointer 'inputcloud->L122,Lidar.h 
+    // To no show this inputcloud and scan we need to render it using renderRay fn (fn definition) for visualization --> L24,render.cpp
+    renderRays(viewer, lidar->position, inputcloud); // The lidar Position is defined as 'Vect3 Position' --> L78,Lidar.h
   
 }
 
