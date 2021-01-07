@@ -42,7 +42,7 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     // ----------------------------------------------------
     
     // RENDER OPTIONS
-    bool renderScene = true;
+    bool renderScene = false;// This bool render the cars in Scene and if it is set to false, visualization have no cars resulting only PC
     std::vector<Car> cars = initHighway(renderScene, viewer);
     
     // TODO:: Create lidar sensor
@@ -50,10 +50,12 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     Lidar *lidar = new Lidar(cars,0);  // Create a Pointer to lidar object on heap as it my be quite large and taking groundslope =0 (Horizontal rays) and cars initHighway fn -> L85,Lidar.h 
 
     // TODO:: Create point processor
-    pcl::PointCloud<pcl::PointXYZ>::Ptr inputcloud = lidar->scan(); // The lidar object is pointing to address of fn scan() to store the data in pointer 'inputcloud->L122,Lidar.h 
+    pcl::PointCloud<pcl::PointXYZ>::Ptr inputCloud = lidar->scan(); // The lidar object is pointing to address of fn scan() to store the data in pointer 'inputcloud->L122,Lidar.h 
     // To no show this inputcloud and scan we need to render it using renderRay fn (fn definition) for visualization --> L24,render.cpp
-    renderRays(viewer, lidar->position, inputcloud); // The lidar Position is defined as 'Vect3 Position' --> L78,Lidar.h
-  
+    renderRays(viewer, lidar->position, inputCloud); // The lidar Position is defined as 'Vect3 Position' --> L78,Lidar.h
+
+    // Instead of RenderRays we can also use RenderPoints via RenderPointcloud fn (fn definition)for visualization --> L43,render.cpp
+    renderPointCloud(viewer, inputCloud,"inputCloud");
 }
 
 
