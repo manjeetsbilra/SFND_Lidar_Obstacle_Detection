@@ -42,7 +42,7 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     // ----------------------------------------------------
     
     // RENDER OPTIONS
-    bool renderScene = true;// This bool render the cars in Scene and if it is set to false, visualization have no cars resulting only PC
+    bool renderScene = false;// This bool render the cars in Scene and if it is set to false, visualization have no cars resulting only PC
     std::vector<Car> cars = initHighway(renderScene, viewer);
     
     // TODO:: Create lidar sensor
